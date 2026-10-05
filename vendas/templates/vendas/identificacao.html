@@ -1,0 +1,19 @@
+{% extends "vendas/base.html" %}
+{% block titulo %}Mini mercado da Sami{% endblock %}
+{% block conteudo %}
+  <div class="topo">
+    <div class="icone">&#128722;</div>
+    <p class="titulo">Mini mercado da Sami</p>
+    <p class="subtitulo">Vamos comecar sua compra</p>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="{{ form.nome.id_for_label }}">Nome e sobrenome</label>
+    {{ form.nome }}
+    {% if form.nome.errors %}
+      <div class="erro">{{ form.nome.errors.0 }}</div>
+    {% endif %}
+    <button type="submit" class="btn">Continuar</button>
+  </form>
+{% endblock %}

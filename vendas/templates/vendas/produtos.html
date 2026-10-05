@@ -1,0 +1,36 @@
+{% extends "vendas/base.html" %}
+{% block titulo %}Escolha os produtos{% endblock %}
+{% block conteudo %}
+  <p class="titulo" style="margin-bottom:14px;">Ola, {{ nome_comprador }}</p>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="erro">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    {% for produto in produtos %}
+      <div class="produto-linha">
+        <div>
+          <div class="produto-nome">{{ produto.nome }}</div>
+          <div class="produto-preco">R$ {{ produto.preco }}</div>
+        </div>
+        <input type="number" name="qtd_{{ produto.id }}" class="qtd-input" value="0" min="0" max="50">
+      </div>
+    {% empty %}
+      <p>Nenhum produto disponivel no momento.</p>
+    {% endfor %}
+
+    <div class="pagamento">
+      <label>Forma de pagamento</label>
+      {% for radio in pagamento_form.forma_pagamento %}
+        <label class="pagamento-opcao">{{ radio.tag }} {{ radio.choice_label }}</label>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="btn" style="margin-top:14px;">Confirmar compra</button>
+  </form>
+{% endblock %}
