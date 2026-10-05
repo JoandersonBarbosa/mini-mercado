@@ -70,9 +70,28 @@ input[type="text"] {
 }
 .produto-nome { font-size: 13px; font-weight: 700; }
 .produto-preco { font-size: 12px; color: var(--texto-suave); margin-top: 2px; }
+.stepper {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.step-btn {
+  width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--borda);
+  background: #fff; color: var(--azul); font-size: 16px; font-weight: 700;
+  line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.step-btn:hover { background: var(--azul-claro); }
+.step-btn:active { background: var(--azul); color: #fff; }
+
 .qtd-input {
-  width: 54px; text-align: center; border: 1px solid var(--borda); border-radius: 6px;
-  padding: 6px 4px; font-size: 13px;
+  width: 38px; text-align: center; border: 1px solid var(--borda); border-radius: 6px;
+  padding: 6px 2px; font-size: 13px;
+  -moz-appearance: textfield;
+}
+.qtd-input::-webkit-outer-spin-button,
+.qtd-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .pagamento { border-top: 1px solid #e3eaf7; margin-top: 14px; padding-top: 14px; }
